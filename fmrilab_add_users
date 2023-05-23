@@ -1,0 +1,50 @@
+#!/bin/bash
+
+userlistfname=/home/lconcha/tools/fmriusers_list
+primaryGroup=fmriuser
+temporalPassword=temporal
+ingroups="dialout,cdrom,plugdev,lpadmin,adm,sambashare,fuse,video,dialout,fax,floppy,tape,dip"
+
+
+# encriptar el pwd temporal
+pass=$(perl -e 'print crypt($ARGV[0], "password")' $temporalPassword)
+
+
+# Checar si soy sudo
+if [ ! $(id -u) -eq 0 ]; then
+	echo "Only sudo can do this"
+	exit 2
+fi
+
+
+cat $userlistfname | while read line
+do
+	id=`echo $line | awk -F, '{print $1}'`
+        fullName=`echo $line | awk -F, '{print $2}'`
+	if [ ! -d /home/${id} ]
+	then
+		echo User $id does not exist. Creating...
+		useradd -m -c "$fullName" -p "$pass" $id 
+	else
+		echo User $id already exists.
+	fi
+
+	# Modificar los grupos y el shell
+        groupsToAdd="$id,$ingroups"
+	usermod -g $primaryGroup $id
+        usermod -G "$groupsToAdd" $id
+        usermod -s /bin/bash $id
+
+	# agregar la configuracion del sistema al .bashrc
+	str=`grep fmrilab_configfile /home/${id}/.bashrc`
+	if [ -z "$str" ]
+	then
+	echo "
+	fmrilab_configfile=/home/lconcha/fmrilab_configfile
+	if [ -f $fmrilab_configfile ]
+	then
+		source \$fmrilab_configfile
+	fi"  >> /home/${id}/.bashrc
+	fi
+done
+

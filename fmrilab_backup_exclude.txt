@@ -1,0 +1,23 @@
+- *.dcm
+- *.DCM
+- .*/
+- *.tmp
+- Downloads/
+- tests/
+- software/
+- ubuntu-builder/
+- mnt/
+- VirtualBox/
+- Dropbox/
+- .xsession-errors
+- .xsession-*
+- borrame/
+- Borrame/
+- BORRAME/
+- tmp/
+- temporal/
+- Temporal/
+- TEMPORAL/
+- TMP/
+- VirtualBox\ VMs/
+- VirtualBox VMs/
