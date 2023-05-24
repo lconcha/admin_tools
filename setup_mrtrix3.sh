@@ -8,7 +8,7 @@ unset mrtrixDir
 PATH=$(IFS=':';p=($PATH);unset IFS;p=(${p[@]%%*mrtrix*});IFS=':';echo "${p[*]}";unset IFS)
 export PATH
 
-export mrtrixDir=/home/inb/lconcha/fmrilab_software/mrtrix3
+export mrtrixDir=/home/inb/soporte/lanirem_software/mrtrix3
 export PATH=${mrtrixDir}/bin:${mrtrixDir}/scripts:${mrtrixDir}/lib:${PATH}
 export LD_LIBRARY_PATH=${mrtrixDir}/lib:${LD_LIBRARY_PATH}
 
