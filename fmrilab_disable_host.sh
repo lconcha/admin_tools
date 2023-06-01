@@ -4,9 +4,9 @@
 H=$1
 
 
-if [[ ! `whoami` == "soporte" ]]
+if [[ ! `whoami` == "root" ]]
 	then
-	echo "Only user soporte can do that. Farewell, `whoami`"
+	echo "Only user root can do that. Farewell, `whoami`"
 	exit 2
 fi
 
