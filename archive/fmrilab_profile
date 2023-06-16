@@ -1,0 +1,12 @@
+
+
+if [ $(id -gn) = "fmriuser" ]; then
+## Added by Luis Concha
+	export FMRILAB_CONFIGFILE=/home/inb/cluster/fmrilab_configfile
+#echo "Corriendo archivo de configuracion $FMRILAB_CONFIGFILE"
+	source $FMRILAB_CONFIGFILE
+elif [ $(id -gn) = "bioinfo" ]; then
+	export BIOINFO_CONFIGFILE=/home/inb/cluster/bioinfo_configfile
+	source $BIOINFO_CONFIGFILE
+fi
+
