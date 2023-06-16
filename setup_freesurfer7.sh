@@ -8,5 +8,5 @@ unset FREESURFER_HOME
 PATH=$(IFS=':';p=($PATH);unset IFS;p=(${p[@]%%*freesurfer*});IFS=':';echo "${p[*]}";unset IFS)
 export PATH
 
-export FREESURFER_HOME=/home/inb/lconcha/fmrilab_software/freesurfer_7.4.1
+export FREESURFER_HOME=/home/inb/lconcha/lanirem_software/freesurfer_7.4.1
 source $FREESURFER_HOME/SetUpFreeSurfer.sh
