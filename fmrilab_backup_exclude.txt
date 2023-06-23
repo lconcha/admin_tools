@@ -21,3 +21,7 @@
 - TMP/
 - VirtualBox\ VMs/
 - VirtualBox VMs/
+- nobackup/
+- NoBackup/
+- NOBACKUP/
+- noBackup/
