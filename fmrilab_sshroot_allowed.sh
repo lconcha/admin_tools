@@ -9,17 +9,15 @@ then
 fi
 
 
-while getopts "brt" options
-do
-  case "${options}" in
-    b)
+case "$1" in
+    backup_borg)
       /home/inb/soporte/admin_tools/fmrilab_borg_backup.sh
     ;;
-    r)
+    backup_rsync)
       echo "rsync not implemented yet"
       exit 0
     ;;
-    t)
+    test)
       echo "This is a test"
       exit 0
     ;;
