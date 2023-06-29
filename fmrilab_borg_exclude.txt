@@ -24,3 +24,6 @@
 */NoBackup/
 */NOBACKUP/
 */noBackup/
+*/pruebas/
+*/Pruebas/
+*/PRUEBAS/
