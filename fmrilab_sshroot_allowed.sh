@@ -26,5 +26,3 @@ case "$1" in
       exit 2
     ;;
   esac
-
-done
