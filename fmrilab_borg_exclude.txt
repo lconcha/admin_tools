@@ -2,7 +2,7 @@
 */*.DCM
 */*.tmp
 */Downloads/
-*/Trash*/
+*/.Trash*/
 */tests/
 */software/
 */ubuntu-builder/
