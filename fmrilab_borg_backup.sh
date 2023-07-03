@@ -46,6 +46,19 @@ echo "Starting backup"
 PATHS_TO_BACKUP=/misc/${HOSTNAME}*
 
 
+# wake up the autofs
+cat /misc/${HOSTNAME}*/.testDir/.testFile
+ls /misc/${HOSTNAME}*/.testDir/.testFile
+for d in /misc/${HOSTNAME}*
+do
+  if [ ! -f ${d}/.testDir/.testFile ]
+  then
+   echo "ERROR. Cannot find ${d}/.testDir/.testFile"
+   exit 2
+  fi
+done
+
+
 borg create                         \
     --remote-path=/usr/local/bin/borg \
     --verbose                       \
