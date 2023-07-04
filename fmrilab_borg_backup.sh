@@ -13,6 +13,7 @@ fi
 # https://borgbackup.readthedocs.io/en/stable/quickstart.html
 
 echo "start of script"
+export SECONDS=0
 date
 
 # Setting this, so the repo does not need to be given on the commandline:
@@ -124,6 +125,7 @@ else
 fi
 
 echo "End of script"
+echo "INFO. Execution time: $SECONDS seconds."
 date
 exit ${global_exit}
 
