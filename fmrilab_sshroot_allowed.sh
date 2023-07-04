@@ -19,6 +19,9 @@ case "$1" in
     ;;
     test)
       echo "This is a test"
+      echo "User: $(whoami)"
+      echo "Host: $(hostname)"
+      date
       exit 0
     ;;
     *)
