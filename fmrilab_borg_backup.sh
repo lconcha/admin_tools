@@ -47,16 +47,26 @@ PATHS_TO_BACKUP=/misc/${HOSTNAME}*
 
 
 # wake up the autofs
-cat /misc/${HOSTNAME}*/.testDir/.testFile
+echo "INFO. Waking up the partitions to back up"
 ls /misc/${HOSTNAME}*/.testDir/.testFile
+isOK=1
 for d in /misc/${HOSTNAME}*
 do
   if [ ! -f ${d}/.testDir/.testFile ]
   then
    echo "ERROR. Cannot find ${d}/.testDir/.testFile"
-   exit 2
+   isOK=0
+  else
+   echo "INFO. Found ${d}/.testDir/.testFile"
+   cat ${d}/.testDir/.testFile
   fi
 done
+if [ $isOK -eq 0 ]
+then
+  echo "ERROR. Cannot continue"
+  exit 2
+fi
+
 
 
 borg create                         \
