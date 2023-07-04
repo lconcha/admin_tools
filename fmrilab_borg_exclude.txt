@@ -29,3 +29,4 @@
 */pruebas/
 */Pruebas/
 */PRUEBAS/
+*/Penelope/
