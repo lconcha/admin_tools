@@ -11,6 +11,10 @@
 # Replace ... with the contents of:
 # admin@sesamo8:/volume1/homes/admin/.ssh/id_rsa.pub
 #
+# This script ends up  calling fmrilab_borg_backup.sh so check that out
+# to remember how to init the borg repo.
+#
+#
 # In sesamo8, this file is in /volume1/NetBackup/scripts
 #
 # LU15 (0N(H4
