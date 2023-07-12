@@ -34,8 +34,8 @@ fi
 
 # alias para fsl set up
 export FSLPARALLEL=1
-export FSL602_SETUP_FILE=/home/inb/soporte/admin_tools/setup_fsl602
-alias fsl602='source $FSL602_SETUP_FILE'
+export FSL6_SETUP_FILE=/home/inb/soporte/admin_tools/setup_fsl6
+alias fsl6='source $FSL6_SETUP_FILE'
 
 # alias para freesurfer setup
 FS_FREESURFERENV_NO_OUTPUT=1
