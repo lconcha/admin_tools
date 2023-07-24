@@ -127,11 +127,11 @@ echo "source \$FMRILAB_CONFIGFILE" >> /home/inb/${user_login}/.bashrc
 
 if [ $send_email -eq 1 ]
 then
-  %pawd="add backticks"cat /home/inb/lconcha/fmrilab_software/tools/private/.emailpwd
+  %pawd="add backticks"cat /home/inb/soporte/admin_tools/private/.emailpwd
   %smtpserver=smtp.gmail.com:587
   %xuser="inb.fmrilab"
   
-  pawd=`cat /home/inb/lconcha/fmrilab_software/tools/private/sendinblue.pwd`
+  pawd=`cat /home/inb/soporte/admin_tools/private/sendinblue.pwd`
   smtpserver=smtp-relay.sendinblue.com:587
   xuser="lconcha@gmail.com"
   
