@@ -15,7 +15,7 @@ print_help()
 `basename $0` <login> <\"full Name\"> <\"email\"> <\"rocket_user\">
 
 Options:
--noemail Don't send welcome email.
+-noWelcome Don't send welcome email.
 -norocket Don't add rocketchat file username.
 "
 
@@ -52,7 +52,7 @@ do
     print_help
     exit 1
   ;;
-  -noemail)
+  -noWelcome)
     nextarg=`expr $i + 1` 
     send_email=0
   ;;
