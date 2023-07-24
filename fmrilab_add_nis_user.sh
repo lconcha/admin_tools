@@ -12,10 +12,11 @@
 print_help()
 {
   echo "
-`basename $0` <login> <\"full Name\"> <\"email\">
+`basename $0` <login> <\"full Name\"> <\"email\"> <\"rocket_user\">
 
 Options:
 -noemail Don't send welcome email.
+-norocket Don't add rocketchat file username.
 "
 
 }
@@ -33,11 +34,14 @@ fi
 user_login=$1
 user_name=$2
 user_email=$3
+user_rocket=$4
 
 grp="fmriuser"
 
 write_email=1
 send_email=1
+
+write_rocket=1
 
 declare -i i
 i=1
@@ -51,6 +55,10 @@ do
   -noemail)
     nextarg=`expr $i + 1` 
     send_email=0
+  ;;
+  -norocket)
+    nextarg=`expr $i + 1` 
+    write_rocket=0
   ;;
   esac
   i=$[$i+1]
@@ -81,12 +89,20 @@ useradd -g $grp \
   $user_login
 passwd $user_login
 
-
+# Write.email file
 if [ $write_email -eq 1 ]
 then
   email_file=/home/inb/${user_login}/.email
   echo " Writing $user_email to $email_file"
   echo $user_email > $email_file
+fi
+
+# Write .rocketuser file
+if [ $write_rocket -eq 1 ]
+then
+  rocket_file=/home/inb/${user_login}/.rocketuser
+  echo " Writing $user_rocket to $rocket_file"
+  echo $user_rocket > $rocket_file
 fi
 
 
