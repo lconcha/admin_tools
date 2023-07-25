@@ -11,12 +11,9 @@
 # Replace ... with the contents of:
 # admin@sesamo8:/volume1/homes/admin/.ssh/id_rsa.pub
 #
-# This script ends up  calling fmrilab_borg_backup.sh so check that out
-# to remember how to init the borg repo.
-#
 #
 # In sesamo8, this file is in /volume1/NetBackup/scripts
-#
+
 # LU15 (0N(H4
 # INB-UNAM
 # July 2023
@@ -37,6 +34,15 @@ tanner"
 
 f_running=/volume1/NetBackup/logs.borg/borg_currently_running
 f_thislog=/volume1/NetBackup/logs.borg/borg_$(date +%F-%H:%M:%S).log
+
+
+if [ -f $ f_running ]
+then
+  echo "ERROR. Cannot start a new backup while another is running."
+  echo "       Found file: $f_running"
+  exit 2
+fi
+
 
 for h in $C13HOSTS
 do
