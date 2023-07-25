@@ -92,8 +92,8 @@ export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/opt/OpenMPI/lib"
 export MPI_ROOT="/opt/OpenMPI"
 
 
-## Singularity
-singularitypath=/home/inb/soporte/lanirem_software/singularity/bin/
+## Singularity/Apptainer
+singularitypath=/home/inb/soporte/lanirem_software/apptainer/bin/
 export PATH=${PATH}:${singularitypath}
 
 
