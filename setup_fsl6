@@ -8,7 +8,7 @@ unset FSLDIR
 PATH=$(IFS=':';p=($PATH);unset IFS;p=(${p[@]%%*fsl*});IFS=':';echo "${p[*]}";unset IFS)
 export PATH
 
-export FSLDIR=/home/inb/soporte/lanirem_software/fsl_6.0.5
+export FSLDIR=/home/inb/soporte/lanirem_software/fsl_6.0.7.1
 export PATH=${FSLDIR}/bin:${PATH}
 . ${FSLDIR}/etc/fslconf/fsl.sh
 export FSLPARALLEL=1

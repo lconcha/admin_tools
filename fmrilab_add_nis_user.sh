@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# 24 Jul, 2023. Ricardo Rios
+# Erase group option. Make e-mail field mandatory. Make send email optional.
+
 # Sept 07, 2015. Added group option. lconcha
 
 # Modification: June 26, 2012
@@ -9,17 +12,17 @@
 print_help()
 {
   echo "
-`basename $0` <login> <\"full Name\"> [Options]
+`basename $0` <login> <\"full Name\"> <\"email\"> <\"rocket_user\">
 
 Options:
--bioinfo   Add user to group bioinfo. Default is fmriuser
--email <email>
+-noWelcome Don't send welcome email.
+-norocket Don't add rocketchat file username.
 "
 
 }
 
 
-if [ $# -lt 1 ] 
+if [ $# -lt 2 ] 
 then
 	echo " ERROR: Need more arguments..."
 	print_help
@@ -30,10 +33,16 @@ fi
 
 user_login=$1
 user_name=$2
+user_email=$3
+user_rocket=$4
+
 grp="fmriuser"
 
-write_email=0
-send_email=0
+write_email=1
+send_email=1
+
+write_rocket=1
+
 declare -i i
 i=1
 for arg in "$@"
@@ -43,14 +52,13 @@ do
     print_help
     exit 1
   ;;
-  -bioinfo)
-    grp="bioinfo"
+  -noWelcome)
+    nextarg=`expr $i + 1` 
+    send_email=0
   ;;
-  -email)
-    nextarg=`expr $i + 1`
-    eval user_email=\${${nextarg}}
-    write_email=1
-    send_email=1
+  -norocket)
+    nextarg=`expr $i + 1` 
+    write_rocket=0
   ;;
   esac
   i=$[$i+1]
@@ -81,12 +89,20 @@ useradd -g $grp \
   $user_login
 passwd $user_login
 
-
+# Write.email file
 if [ $write_email -eq 1 ]
 then
   email_file=/home/inb/${user_login}/.email
   echo " Writing $user_email to $email_file"
   echo $user_email > $email_file
+fi
+
+# Write .rocketuser file
+if [ $write_rocket -eq 1 ]
+then
+  rocket_file=/home/inb/${user_login}/.rocketuser
+  echo " Writing $user_rocket to $rocket_file"
+  echo $user_rocket > $rocket_file
 fi
 
 
@@ -108,19 +124,14 @@ echo "source \$FMRILAB_CONFIGFILE" >> /home/inb/${user_login}/.bashrc
 
 
 
-if [ -z "$user_email" ];     
-then
-  send_email=0
-fi
-
 
 if [ $send_email -eq 1 ]
 then
-  %pawd="add backticks"cat /home/inb/lconcha/fmrilab_software/tools/private/.emailpwd
+  %pawd="add backticks"cat /home/inb/soporte/admin_tools/private/.emailpwd
   %smtpserver=smtp.gmail.com:587
   %xuser="inb.fmrilab"
   
-  pawd=`cat /home/inb/lconcha/fmrilab_software/tools/private/sendinblue.pwd`
+  pawd=`cat /home/inb/soporte/admin_tools/private/sendinblue.pwd`
   smtpserver=smtp-relay.sendinblue.com:587
   xuser="lconcha@gmail.com"
   
@@ -142,7 +153,7 @@ fi
 
 echo "Finished creating user $user_login and updated NIS"
 
-#Incluir al usuario en cluster (funciona solo en talairach)
+#Incluir al usuario en cluster (funciona solo en host cluster)
 #qconf -au $user_login arusers
 #qconf -au $user_login users
 
