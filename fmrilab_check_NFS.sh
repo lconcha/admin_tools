@@ -58,7 +58,7 @@ do
 # fi
 
 
-whiteList=`cat /home/inb/lconcha/fmrilab_software/tools/inb_cluster_whiteList.txt`
+whiteList=`cat /home/inb/soporte/inb_cluster_whiteList.txt`
 isWhite=0
 for w in $whiteList
 do
