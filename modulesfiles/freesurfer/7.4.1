@@ -15,7 +15,7 @@ set               root                 /home/inb/soporte/lanirem_software/freesu
 prepend-path          PATH           $root/bin
 
 prepend-path          FREESURFER_HOME           $root/
-prepend-path          FSF_OUTPUT_FORMAT         nii
+setenv	              FSF_OUTPUT_FORMAT         nii
 
 prepend-path          SUBJECTS_DIR              $root/subjects
 prepend-path          FUNCTIONALS_DIR           $root/sessions

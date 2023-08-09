@@ -20,12 +20,12 @@ prepend-path	LD_LIBRARY_PATH	$root/lib
 #prepend-path     LD_LIBRARY_PATH         $root/fslpython/lib
 
 # variables from $root/etc/fslconf/fsl.sh
-prepend-path	FSLOUTPUTTYPE           NIFTI_GZ
-prepend-path	FSLMULTIFILEQUIT        TRUE
+setenv	FSLOUTPUTTYPE           NIFTI_GZ
+setenv	FSLMULTIFILEQUIT        TRUE
 prepend-path	FSLTCLSH	$root/bin/fsltclsh
 prepend-path	FSLWISH		$root/bin/fslwish
-prepend-path	FSLPARALLEL	1
-prepend-path	FSLGECUDAQ	cuda.q
+setenv	FSLPARALLEL	1
+setenv	FSLGECUDAQ	cuda.q
 
 
 
