@@ -1,0 +1,15 @@
+#%Module -*- tcl -*-
+##
+## modulefile
+##
+proc ModulesHelp { } {
+
+  puts stderr "\tAdds itksnap to your environment variables,"
+}
+
+module-whatis "adds itksnap to your environment variables"
+
+set               root                 /home/inb/soporte/lanirem_software/itksnap-3.8.0-20190612-Linux-gcc64
+
+prepend-path          PATH           $root/bin
+

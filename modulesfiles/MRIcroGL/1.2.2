@@ -1,0 +1,15 @@
+#%Module -*- tcl -*-
+##
+## modulefile
+##
+proc ModulesHelp { } {
+
+  puts stderr "\tAdds MRIcroGL to your environment variables,"
+}
+
+module-whatis "adds MRIcroGL to your environment variables"
+
+set               root               /home/inb/soporte/lanirem_software/mricrogl_lx
+
+prepend-path          PATH           $root/
+
