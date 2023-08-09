@@ -1,0 +1,42 @@
+#%Module -*- tcl -*-
+##
+## modulefile
+##
+proc ModulesHelp { } {
+
+  puts stderr "\tAdds fsl to your environment variables,"
+}
+
+module-whatis "adds fsl to your environment variables"
+
+set               root                 /home/inb/soporte/lanirem_software/fsl_6.0.7.1
+
+prepend-path	FSLDIR		$root
+prepend-path	PATH		$root/bin
+prepend-path	LD_LIBRARY_PATH	$root/lib
+
+# fslpython variables
+#prepend-path     PATH           $root/fslpython/bin/
+#prepend-path     LD_LIBRARY_PATH         $root/fslpython/lib
+
+# variables from $root/etc/fslconf/fsl.sh
+prepend-path	FSLOUTPUTTYPE           NIFTI_GZ
+prepend-path	FSLMULTIFILEQUIT        TRUE
+prepend-path	FSLTCLSH	$root/bin/fsltclsh
+prepend-path	FSLWISH		$root/bin/fslwish
+prepend-path	FSLPARALLEL	1
+prepend-path	FSLGECUDAQ	cuda.q
+
+
+
+
+# extras taken from LAVIS file. do we need them?
+#prepend-path     TCL_LIBRARY         $root/extras/lib/tcl8.4
+#prepend-path     TK_LIBRARY          $root/extras/lib/tk8.4
+
+#prepend-path     LD_LIBRARY_PATH         $root/extras/lib
+
+#prepend-path     DYLD_LIBRARY_PATH       $root/extras/lib
+#prepend-path     SHLIB_PATH              $root/extras/lib
+#prepend-path     TCLTKSHELL              basename
+

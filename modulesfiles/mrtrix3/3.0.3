@@ -1,0 +1,20 @@
+#%Module -*- tcl -*-
+##
+## modulefile
+##
+proc ModulesHelp { } {
+
+  puts stderr "\tAdds Mrtix3 to your environment variables,"
+}
+
+module-whatis "adds Mrtrix3 compilers to your environment variables"
+
+set               root                 /home/inb/lconcha/fmrilab_software/mrtrix3
+
+prepend-path	PATH           $root/bin
+prepend-path	PATH                 $root/scripts
+prepend-path	LD_LIBRARY_PATH      $root/lib
+
+#prereq  gcc
+#conflict    mrtrix3
+

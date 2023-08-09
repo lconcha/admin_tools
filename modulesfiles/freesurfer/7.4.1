@@ -1,0 +1,42 @@
+#%Module -*- tcl -*-
+##
+## modulefile
+##
+proc ModulesHelp { } {
+
+  puts stderr "\tAdds Freesurfer to your environment variables,"
+}
+
+module-whatis "adds Freesurfer to your environment variables"
+
+set               root                 /home/inb/soporte/lanirem_software/freesurfer_7.4.1
+
+
+prepend-path          PATH           $root/bin
+
+prepend-path          FREESURFER_HOME           $root/
+prepend-path          FSF_OUTPUT_FORMAT         nii
+
+prepend-path          SUBJECTS_DIR              $root/subjects
+prepend-path          FUNCTIONALS_DIR           $root/sessions
+
+
+prepend-path          FSFAST_HOME               $root/fsfast
+prepend-path          FMRI_ANALYSIS_DIR         $root/fsfast
+
+
+prepend-path          MNI_DIR                   $root/mni
+prepend-path          MINC_BIN_DIR              $root/mni/bin
+prepend-path          MINC_LIB_DIR              $root/mni/lib
+prepend-path          MINC_DATAPATH             $root/mni/data
+prepend-path          MNI_PERL5LIB              $root/mni/share/perl5
+
+
+# podriamos hacer que haga load de fsl como requisito
+# prepend-path          FSL_DIR              $root/mni/bin
+
+
+
+# del template de lavis pero no exite en neustra instalacion
+#prepend-path          LD_LIBRARY_PATH           $root/lib/misc/lib
+#prepend-path          DYLD_LIBRARY_PATH         $root/lib/misc/lib
