@@ -1,0 +1,85 @@
+#!/bin/bash
+
+# Revisamos si ya corrio el archivo de configuracion
+#echo FMRILAB_CONFIGFILE_RAN  vale $FMRILAB_CONFIGFILE_RAN 
+if [ ! -z $FMRILAB_CONFIGFILE_RAN ]
+then
+  echo ""
+  #return 1
+fi
+
+# Don clusterio LOGO
+logo=/home/inb/soporte/admin_tools/fmrilab_logo.txt
+cat $logo
+
+
+# modules config
+source /etc/profile.d/modules.sh  # define el comando module
+export MODULEPATH=/etc/environment-modules/modules:/home/inb/soporte/admin_tools/modulesfiles # para el path de los modulos
+#export MODULEPATH=/etc/environment-modules/modules:/misc/rhesus/rrios/Don_Clusterio/Code/admin_tools/modulesfiles # palpha testing path
+
+# SGE config
+if [ -d /opt/sge ]
+then
+  export SGE_ROOT=/opt/sge
+  fmrilab_sge_file=${SGE_ROOT}/fmrilab/common/settings.sh
+  if [ -f $fmrilab_sge_file ]
+  then
+    source ${SGE_ROOT}/fmrilab/common/settings.sh
+  else
+    echo " [AGUAS] gridengine mal configurado, no existe $fmrilab_sge_file"
+    unset SGE_ROOT
+  fi
+else
+    echo " [AGUAS] gridengine mal configurado, no existe /opt/sge"
+    unset SGE_ROOT
+fi
+
+
+# OTROS
+
+#  Configuramos otras herramientas
+export PATH=${PATH}:/home/inb/soporte/inb_tools
+
+
+## OpenMPI
+export PATH="$PATH:/opt/OpenMPI/bin"
+export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/opt/OpenMPI/lib"
+export MPI_ROOT="/opt/OpenMPI"
+
+
+## Singularity/Apptainer
+singularitypath=/home/inb/soporte/lanirem_software/apptainer/bin/
+export PATH=${PATH}:${singularitypath}
+
+
+
+
+
+# ALIAS
+alias scpresume="rsync -avz --partial --progress --rsh=ssh"
+
+
+# Una bandera para avisar que este archivo ya corrio
+# La intencion es que /etc/profile lo corre system-wide, y luego cada usuario,
+# pero para que correrlo dos veces?
+export FMRILAB_CONFIGFILE_RAN=1
+
+
+
+
+
+
+echo "Hola `whoami`. Bienvenido a `uname -n`."
+echolor green "---------------------------------------------------------------"
+echolor green " Python:  Instala tu propia Anaconda o miniconda. Instrucciones:"
+echolor green "          https://github.com/c13inb/c13inb.github.io/wiki/Anaconda"
+echolor green "---------------------------------------------------------------"
+echo "Visita la wiki"
+echolor bold "  Revisa periódicamente tus respaldos. Aprende cómo hacerlo en la wiki."
+echo -e "\n"
+wikiURL=https://github.com/c13inb/c13inb.github.io/wiki
+echolor cyan "$wikiURL"
+echo ""
+
+
