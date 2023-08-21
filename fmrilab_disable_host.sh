@@ -20,7 +20,7 @@ qmod -d *@${H}
 
 
 # whitelist this host
-whiteList=/home/inb/lconcha/fmrilab_software/tools/inb_cluster_whiteList.txt
+whiteList=/home/inb/soporte/inb_cluster_whiteList.txt
 WL=`cat $whiteList`
 catted=`grep "$H" $whiteList`
 if [ -z $catted ]
