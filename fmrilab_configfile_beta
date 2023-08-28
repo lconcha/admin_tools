@@ -42,18 +42,23 @@ fi
 export PATH=${PATH}:/home/inb/soporte/inb_tools
 
 
-## OpenMPI
-export PATH="$PATH:/opt/OpenMPI/bin"
-export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/opt/OpenMPI/lib"
-export MPI_ROOT="/opt/OpenMPI"
+# ALIAS/funciones temporales para retro-compatibilidad.
+# Eliminar cuando los usuarios se acostumbren a los modulos
+MENSAJE_ALIAS="Este comando pronto será desactivado. Se cargó el software pero empieza a usar módulos para eso. Mas info en LINK"
+fsl6 () {
+  echo $MENSAJE_ALIAS
+  module load fsl
+}
 
+mrtrix3 () {
+  echo $MENSAJE_ALIAS
+  module load mrtrix
+}
 
-## Singularity/Apptainer
-singularitypath=/home/inb/soporte/lanirem_software/apptainer/bin/
-export PATH=${PATH}:${singularitypath}
-
-
-
+freesurfer7 () {
+  echo $MENSAJE_ALIAS
+  module load freesurfer
+}
 
 
 # ALIAS
