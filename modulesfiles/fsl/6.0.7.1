@@ -12,7 +12,7 @@ module-whatis "adds fsl to your environment variables"
 set               root                 /home/inb/soporte/lanirem_software/fsl_6.0.7.1
 
 prepend-path	FSLDIR		$root
-prepend-path	PATH		$root/bin
+prepend-path	PATH		$root/share/fsl/bin
 prepend-path	LD_LIBRARY_PATH	$root/lib
 
 # fslpython variables
@@ -40,3 +40,4 @@ setenv	FSLGECUDAQ	nvidia.q
 #prepend-path     SHLIB_PATH              $root/extras/lib
 #prepend-path     TCLTKSHELL              basename
 
+conflict fsl
