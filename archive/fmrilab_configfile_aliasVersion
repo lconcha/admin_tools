@@ -1,0 +1,129 @@
+#!/bin/bash
+
+# Revisamos si ya corrio el archivo de configuracion
+#echo FMRILAB_CONFIGFILE_RAN  vale $FMRILAB_CONFIGFILE_RAN 
+if [ ! -z $FMRILAB_CONFIGFILE_RAN ]
+then
+  echo ""
+  #return 1
+fi
+
+# Don clusterio LOGO
+logo=/home/inb/soporte/admin_tools/fmrilab_logo.txt
+cat $logo
+
+
+if [ -d /opt/sge ]
+then
+  export SGE_ROOT=/opt/sge
+  fmrilab_sge_file=${SGE_ROOT}/fmrilab/common/settings.sh
+  if [ -f $fmrilab_sge_file ]
+  then
+    source ${SGE_ROOT}/fmrilab/common/settings.sh
+  else
+    echo " [AGUAS] gridengine mal configurado, no existe $fmrilab_sge_file"
+    unset SGE_ROOT
+  fi
+else
+    echo " [AGUAS] gridengine mal configurado, no existe /opt/sge"
+    unset SGE_ROOT
+fi
+
+
+# NEUROSOFTWARE
+
+# alias para fsl set up
+export FSLPARALLEL=1
+export FSL6_SETUP_FILE=/home/inb/soporte/admin_tools/setup_fsl6
+alias fsl6='source $FSL6_SETUP_FILE'
+
+# alias para freesurfer setup
+FS_FREESURFERENV_NO_OUTPUT=1
+alias freesurfer7="source /home/inb/soporte/admin_tools/setup_freesurfer7.sh"
+
+
+# Alias para mrtrix3 setup
+alias mrtrix3='source /home/inb/soporte/admin_tools/setup_mrtrix3.sh'
+
+# slicer
+alias slicer=/home/inb/soporte/lanirem_software/Slicer-4.2.2-1-linux-amd64/./Slicer
+
+#itksnap
+alias itksnap=/home/inb/soporte/lanirem_software/itksnap-3.8.0-20190612-Linux-gcc64/bin/itksnap
+
+#Configuramos microGL. dcm2nix es parte de este software
+export PATH=${PATH}:/home/inb/soporte/lanirem_software/mricrogl_lx
+
+## AFNI PATH
+
+export PATH=$PATH:/home/inb/soporte/lanirem_software/afni
+export DYLD_FALLBACK_LIBRARY_PATH=/home/inb/soporte/lanirem_software/afni
+
+## ANTS
+export ANTSPATH=/home/inb/soporte/lanirem_software/antsbin/bin
+export PATH=${ANTSPATH}:$PATH
+
+
+## minc tools
+mincpath=/home/inb/soporte/lanirem_software/minc
+export PATH=${PATH}:${mincpath}/bin
+export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:${mincpath}/lib
+
+
+## dsi-studio
+alias dsi=/home/inb/soporte/lanirem_software/dsi-studio/dsi_studio
+
+## mrds
+export MRDSPATH=/home/inb/soporte/lanirem_software/mrds/bin/
+export PATH=${MRDSPATH}:$PATH
+
+
+# OTROS
+
+#  Configuramos otras herramientas
+export PATH=${PATH}:/home/inb/soporte/inb_tools
+
+# Paraview
+export PATH=${PATH}:/home/inb/soporte/lanirem_software/ParaView-5/bin
+
+## OpenMPI
+export PATH="$PATH:/opt/OpenMPI/bin"
+export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/opt/OpenMPI/lib"
+export MPI_ROOT="/opt/OpenMPI"
+
+
+## Singularity/Apptainer
+singularitypath=/home/inb/soporte/lanirem_software/apptainer/bin/
+export PATH=${PATH}:${singularitypath}
+
+
+
+
+
+# ALIAS
+alias scpresume="rsync -avz --partial --progress --rsh=ssh"
+
+
+# Una bandera para avisar que este archivo ya corrio
+# La intencion es que /etc/profile lo corre system-wide, y luego cada usuario,
+# pero para que correrlo dos veces?
+export FMRILAB_CONFIGFILE_RAN=1
+
+
+
+
+
+
+echo "Hola `whoami`. Bienvenido a `uname -n`."
+echolor green "---------------------------------------------------------------"
+echolor green " Python:  Instala tu propia Anaconda o miniconda. Instrucciones:"
+echolor green "          https://github.com/c13inb/c13inb.github.io/wiki/Anaconda"
+echolor green "---------------------------------------------------------------"
+echo "Visita la wiki"
+echolor bold "  Revisa periódicamente tus respaldos. Aprende cómo hacerlo en la wiki."
+echo -e "\n"
+wikiURL=https://github.com/c13inb/c13inb.github.io/wiki
+echolor cyan "$wikiURL"
+echo ""
+
+

@@ -16,7 +16,6 @@ cat $logo
 # modules config
 source /etc/profile.d/modules.sh  # define el comando module
 export MODULEPATH=/etc/environment-modules/modules:/home/inb/soporte/admin_tools/modulesfiles # para el path de los modulos
-#export MODULEPATH=/etc/environment-modules/modules:/misc/rhesus/rrios/Don_Clusterio/Code/admin_tools/modulesfiles # palpha testing path
 
 # SGE config
 if [ -d /opt/sge ]
@@ -42,18 +41,23 @@ fi
 export PATH=${PATH}:/home/inb/soporte/inb_tools
 
 
-## OpenMPI
-export PATH="$PATH:/opt/OpenMPI/bin"
-export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/opt/OpenMPI/lib"
-export MPI_ROOT="/opt/OpenMPI"
+# ALIAS/funciones temporales para retro-compatibilidad.
+# Eliminar cuando los usuarios se acostumbren a los modulos
+MENSAJE_ALIAS="Este comando pronto será desactivado. Se cargó el software pero empieza a usar módulos para eso. Mas info en LINK"
+fsl6 () {
+  echo $MENSAJE_ALIAS
+  module load fsl
+}
 
+mrtrix3 () {
+  echo $MENSAJE_ALIAS
+  module load mrtrix
+}
 
-## Singularity/Apptainer
-singularitypath=/home/inb/soporte/lanirem_software/apptainer/bin/
-export PATH=${PATH}:${singularitypath}
-
-
-
+freesurfer7 () {
+  echo $MENSAJE_ALIAS
+  module load freesurfer
+}
 
 
 # ALIAS
@@ -68,18 +72,18 @@ export FMRILAB_CONFIGFILE_RAN=1
 
 
 
-
-
 echo "Hola `whoami`. Bienvenido a `uname -n`."
+echolor green "---------------------------------------------------------------"
+echolor green " Usa modulos para ajustar tu ambiente:"
+echolor green "          'module avail' - Muestra los modulos disponibles."
+echolor green "          'module load <module>' - Carga el modulo a tu ambiente para esta sesión."
 echolor green "---------------------------------------------------------------"
 echolor green " Python:  Instala tu propia Anaconda o miniconda. Instrucciones:"
 echolor green "          https://github.com/c13inb/c13inb.github.io/wiki/Anaconda"
 echolor green "---------------------------------------------------------------"
-echo "Visita la wiki"
-echolor bold "  Revisa periódicamente tus respaldos. Aprende cómo hacerlo en la wiki."
-echo -e "\n"
+echo "Visita la wiki:"
 wikiURL=https://github.com/c13inb/c13inb.github.io/wiki
 echolor cyan "$wikiURL"
 echo ""
-
-
+echolor bold "  Revisa periódicamente tus respaldos. Aprende cómo hacerlo en la wiki."
+echo ""

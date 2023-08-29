@@ -9,7 +9,7 @@ proc ModulesHelp { } {
 
 module-whatis "adds afni to your environment variables"
 
-set               root              /home/inb/soporte/lanirem_software/afni
+set               root              /home/inb/soporte/lanirem_software/afni_22.2.04
 prepend-path      PATH              $root/
 prepend-path	DYLD_FALLBACK_LIBRARY_PATH	$root/
 
