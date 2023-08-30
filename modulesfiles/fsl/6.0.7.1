@@ -13,7 +13,7 @@ set               root                 /home/inb/soporte/lanirem_software/fsl_6.
 
 prepend-path	FSLDIR		$root
 prepend-path	PATH		$root/share/fsl/bin
-prepend-path	LD_LIBRARY_PATH	$root/lib
+append-path	LD_LIBRARY_PATH	$root/lib
 
 # fslpython variables
 #prepend-path     PATH           $root/fslpython/bin/
