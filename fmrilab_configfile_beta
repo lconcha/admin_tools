@@ -15,7 +15,6 @@ cat $logo
 
 # modules config
 source /etc/profile.d/modules.sh  # define el comando module
-export MODULEPATH=/etc/environment-modules/modules:/home/inb/soporte/admin_tools/modulesfiles # para el path de los modulos
 
 # SGE config
 if [ -d /opt/sge ]
