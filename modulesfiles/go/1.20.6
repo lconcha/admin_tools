@@ -1,0 +1,18 @@
+#%Module -*- tcl -*-
+##
+## modulefile
+##
+proc ModulesHelp { } {
+
+  puts stderr "\tAdds go to your environment variables,"
+}
+
+module-whatis "adds go to your environment variables"
+
+set             root        /home/inb/soporte/lanirem_software/go_1.20.6
+
+
+setenv		GOPATH	    $root
+
+prepend-path	PATH        $root/bin
+

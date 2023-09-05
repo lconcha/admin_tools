@@ -1,0 +1,15 @@
+#%Module -*- tcl -*-
+##
+## modulefile
+##
+proc ModulesHelp { } {
+
+  puts stderr "\tAdds Julia to your environment variables,"
+}
+
+module-whatis "adds Julia to your environment variables"
+
+set               root                 /home/inb/soporte/lanirem_software/julia_1.6.7
+
+prepend-path	PATH           $root/bin
+
