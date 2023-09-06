@@ -9,7 +9,7 @@ proc ModulesHelp { } {
 
 module-whatis "adds matlab to your environment variables"
 
-set               root                 /usr/local/MATLAB/R2023a/bin
+set               root                 /usr/local/MATLAB/R2023a
 
 prepend-path	PATH           $root/bin
 
