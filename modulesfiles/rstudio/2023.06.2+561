@@ -1,0 +1,17 @@
+#%Module -*- tcl -*-
+##
+## modulefile
+##
+proc ModulesHelp { } {
+
+  puts stderr "\tAdds R-studio to your environment variables,"
+}
+
+module-whatis "adds R-studio to your environment variables"
+
+set               root         /home/inb/soporte/lanirem_software/rstudio-2023.06.2+561
+
+prepend-path	PATH           $root/bin
+
+module load R
+
