@@ -1,0 +1,37 @@
+#%Module -*- tcl -*-
+##
+## modulefile
+##
+proc ModulesHelp { } {
+
+  puts stderr "\tAdds Minc toolkit to your environment variables,"
+}
+
+module-whatis "adds Minc toolkit to your environment variables"
+
+set             root          /home/inb/soporte/lanirem_software/minc-toolkit-v2_1.9.18
+
+
+prepend-path   	PATH           	$root/bin
+prepend-path   	PATH           	$root/pipeline
+
+prepend-path   	LD_LIBRARY_PATH	$root/lib
+prepend-path   	LD_LIBRARY_PATH	$root/lib/InsightToolkit
+
+prepend-path   	MANPATH      	$root/man
+
+prepend-path	PERL5LIB	$root/perl
+prepend-path	PERL5LIB	$root/pipeline
+
+prepend-path	MNI_DATAPATH	$root/../share
+prepend-path	MNI_DATAPATH	$root/share
+
+setenv		MINC_TOOLKIT     	$root
+setenv		MINC_TOOLKIT_VERSION   	1.9.18-20230815
+setenv		MINC_FORCE_V2         	1
+setenv		MINC_COMPRESS         	4
+setenv		VOLUME_CACHE_THRESHOLD  -1
+
+# load module for ANTs bins
+module load ANTs
+
