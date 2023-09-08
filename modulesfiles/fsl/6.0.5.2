@@ -9,15 +9,15 @@ proc ModulesHelp { } {
 
 module-whatis "adds fsl to your environment variables"
 
+if [ module-info mode load ] {
+    puts stderr "Warning: Este módulo es una instalación incompleta de fsl. Sólo está aquí por que aún tiene fslview."
+}
+
 set               root                 /home/inb/soporte/lanirem_software/fsl_6.0.5.2
 
 prepend-path	FSLDIR		$root
 prepend-path	PATH		$root/bin
-#prepend-path	LD_LIBRARY_PATH	$root/lib
 
-# fslpython variables
-#prepend-path     PATH           $root/fslpython/bin/
-#prepend-path     LD_LIBRARY_PATH         $root/fslpython/lib
 
 # variables from $root/etc/fslconf/fsl.sh
 setenv	FSLOUTPUTTYPE           NIFTI_GZ
@@ -28,16 +28,5 @@ setenv	FSLPARALLEL	1
 setenv	FSLGECUDAQ	nvidia.q
 
 
-
-
-# extras taken from LAVIS file. do we need them?
-#prepend-path     TCL_LIBRARY         $root/extras/lib/tcl8.4
-#prepend-path     TK_LIBRARY          $root/extras/lib/tk8.4
-
-#prepend-path     LD_LIBRARY_PATH         $root/extras/lib
-
-#prepend-path     DYLD_LIBRARY_PATH       $root/extras/lib
-#prepend-path     SHLIB_PATH              $root/extras/lib
-#prepend-path     TCLTKSHELL              basename
 
 conflict fsl
