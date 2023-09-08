@@ -35,12 +35,6 @@ else
 fi
 
 
-# OTROS
-
-#  Configuramos otras herramientas
-export PATH=${PATH}:/home/inb/soporte/inb_tools
-
-
 # ALIAS/funciones temporales para retro-compatibilidad.
 # Eliminar cuando los usuarios se acostumbren a los modulos
 MENSAJE_ALIAS="Este comando pronto será desactivado. Se cargó el software pero empieza a usar módulos para eso. Mas info en LINK"

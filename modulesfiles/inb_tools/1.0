@@ -1,0 +1,16 @@
+#%Module -*- tcl -*-
+##
+## modulefile
+##
+proc ModulesHelp { } {
+
+  puts stderr "\tAdds inb_tools scripts to your environment variables,"
+}
+
+module-whatis "adds inb_tools scripts to your environment variables"
+
+set               root                 /home/inb/soporte/inb_tools
+
+prepend-path	PATH           $root
+
+
