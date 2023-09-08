@@ -24,4 +24,4 @@ prepend-path      MANPATH           $root/share/man/man1
 #prepend-path      LD_LIBRARY_PATH   $root/include
 #prepend-path      C_INCLUDE_PATH   $root/include
 
-
+conflict deepLabCut
