@@ -4,10 +4,10 @@
 ##
 proc ModulesHelp { } {
 
-  puts stderr "\tAdds Mrtix3 to your environment variables,"
+  puts stderr "\tAdds Dipy python enviroment to your environment variables,"
 }
 
-module-whatis "adds Mrtrix3 compilers to your environment variables"
+module-whatis "adds dipy python enviroment to your environment variables"
 
 
 if [ module-info mode load ] {
