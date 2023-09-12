@@ -16,6 +16,7 @@ cat $logo
 # modules config
 source /etc/profile.d/modules.sh  # define el comando module
 export MODULEPATH=/home/inb/soporte/admin_tools/modulesfiles # carga el path de los modulos de don clusterio
+module load inb_tools # cargamos las inb_tools por default a todo usuario del cluster
 
 # SGE config
 if [ -d /opt/sge ]
@@ -62,9 +63,6 @@ alias scpresume="rsync -avz --partial --progress --rsh=ssh"
 # La intencion es que /etc/profile lo corre system-wide, y luego cada usuario,
 # pero para que correrlo dos veces?
 export FMRILAB_CONFIGFILE_RAN=1
-
-# cargamos la funcion echolor
-source /misc/rhesus/rrios/Don_Clusterio/Code/admin_tools/echolor_function
 
 echo "Hola `whoami`. Bienvenido a `uname -n`."
 echolor green "---------------------------------------------------------------"
