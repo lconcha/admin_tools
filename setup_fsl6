@@ -12,7 +12,7 @@ export FSLDIR=/home/inb/soporte/lanirem_software/fsl_6.0.7.1
 export PATH=${FSLDIR}/bin:${PATH}
 . ${FSLDIR}/etc/fslconf/fsl.sh
 export FSLPARALLEL=1
-export LD_LIBRARY_PATH=${FSLDIR}/lib:${LD_LIBRARY_PATH}
+#export LD_LIBRARY_PATH=${FSLDIR}/lib:${LD_LIBRARY_PATH}
 # force fslview to use this version
 alias fslview=${FSLDIR}/bin/fslview_deprecated
 
