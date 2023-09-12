@@ -66,12 +66,13 @@ export FMRILAB_CONFIGFILE_RAN=1
 
 echo "Hola `whoami`. Bienvenido a `uname -n`."
 echolor green "---------------------------------------------------------------"
-echolor green " Usa modulos para ajustar tu ambiente:"
-echolor green "          'module avail' - Muestra los modulos disponibles."
-echolor green "          'module load <module>' - Carga el modulo a tu ambiente para esta sesión."
+echolor green " Usa módulos para ajustar tu ambiente:"
+echolor green "     'module avail' - Muestra los módulos disponibles."
+echolor green "     'module load <module>' - Carga el módulo para esta sesión."
+echolor green " Más información en https://shorturl.at/hlIJ3 "
 echolor green "---------------------------------------------------------------"
-echolor green " Python:  Instala tu propia Anaconda o miniconda. Instrucciones:"
-echolor green "          https://github.com/c13inb/c13inb.github.io/wiki/Anaconda"
+echolor green " Python: Instala tu propia Anaconda o miniconda. Instrucciones:"
+echolor green "         https://github.com/c13inb/c13inb.github.io/wiki/Anaconda"
 echolor green "---------------------------------------------------------------"
 echo "Visita la wiki:"
 wikiURL=https://github.com/c13inb/c13inb.github.io/wiki
