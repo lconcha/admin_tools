@@ -1,0 +1,27 @@
+#%Module -*- tcl -*-
+##
+## modulefile
+##
+proc ModulesHelp { } {
+
+  puts stderr "\tAdds deeplabcut python enviroment to your environment variables,"
+}
+
+module-whatis "adds deeplabcut python enviroment to your environment variables"
+
+
+if [ module-info mode load ] {
+    puts stderr "Warning: Este módulo utiliza un ambiente de python. Puede afectar tu ambiente/conda local."
+}
+
+
+set               root                 /home/inb/soporte/lanirem_software/python_envs/deeplabcut/
+#set              python   3.9.16
+
+prepend-path      PATH              $root/bin
+prepend-path      MANPATH           $root/share/man/man1
+#prepend-path      LD_RUN_PATH       $root/lib
+#prepend-path      LD_LIBRARY_PATH   $root/include
+#prepend-path      C_INCLUDE_PATH   $root/include
+
+conflict dipy

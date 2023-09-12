@@ -1,0 +1,15 @@
+#%Module -*- tcl -*-
+##
+## modulefile
+##
+proc ModulesHelp { } {
+
+  puts stderr "\tAdds matlab to your environment variables,"
+}
+
+module-whatis "adds matlab to your environment variables"
+
+set               root                 /usr/local/MATLAB/R2023a
+
+prepend-path	PATH           $root/bin
+

@@ -1,0 +1,15 @@
+#%Module -*- tcl -*-
+##
+## modulefile
+##
+proc ModulesHelp { } {
+
+  puts stderr "\tAdds dipy CLI tools to your environment variables,"
+}
+
+module-whatis "adds dipy CLI tools to your environment variables"
+
+set               root                 /home/inb/soporte/lanirem_software/python_bins/dipy_CLI
+
+prepend-path	PATH           $root/1.7.0
+

@@ -1,0 +1,15 @@
+#%Module -*- tcl -*-
+##
+## modulefile
+##
+proc ModulesHelp { } {
+
+  puts stderr "\tAdds Dicomifier to your environment variables,"
+}
+
+module-whatis "adds Dicomifier to your environment variables"
+
+set               root                 /home/inb/soporte/lanirem_software/python_bins/dicomifier
+
+prepend-path	PATH           $root/2.4.0
+

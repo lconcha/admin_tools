@@ -1,0 +1,19 @@
+#%Module -*- tcl -*-
+##
+## modulefile
+##
+proc ModulesHelp { } {
+
+  puts stderr "\tAdds R to your environment variables,"
+}
+
+module-whatis "adds R to your environment variables"
+
+set               root                 /usr/lib/R
+
+prepend-path	PATH           $root/bin
+
+#prepend-path      MANPATH      $root/share/man/man1
+
+conflict R
+
