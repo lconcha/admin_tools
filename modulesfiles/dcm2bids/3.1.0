@@ -13,3 +13,5 @@ set               root                 /home/inb/soporte/lanirem_software/dcm2bi
 
 prepend-path	PATH           $root
 
+module load dcm2niix
+
