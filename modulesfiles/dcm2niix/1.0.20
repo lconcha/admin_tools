@@ -1,0 +1,14 @@
+#%Module -*- tcl -*-
+##
+## modulefile
+##
+proc ModulesHelp { } {
+
+  puts stderr "\tAdds dcm2niix (included in MRIcroGL) to your environment variables"
+}
+
+module-whatis "adds dcm2niix (included in MRIcroGL) to your environment variables"
+
+
+module load MRIcroGL/1.2.2
+
