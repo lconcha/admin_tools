@@ -1,0 +1,18 @@
+#%Module -*- tcl -*-
+##
+## modulefile
+##
+proc ModulesHelp { } {
+
+  puts stderr "\tAdds apptainer/singularity to your environment variables,"
+}
+
+module-whatis "adds apptainer/singularity compilers to your environment variables"
+
+set               root                 /home/inb/soporte/lanirem_software/apptainer
+
+prepend-path	PATH           $root/bin
+prepend-path    MANPATH                $root/share/man/man1
+
+
+module load apptainer/1.2.0
