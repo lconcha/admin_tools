@@ -19,10 +19,13 @@
 # July 2023
 
 C13HOSTS="
+bloch
 brown
 carr
 ernst
 fourier
+larmor
+lauterbur
 mansfield
 nyquist
 penfield
@@ -30,7 +33,7 @@ rabi
 rhesus
 sherrington
 tanner"
-# bloch hahn # no tienen discos.
+# hahn # no tienen discos.
 
 f_running=/volume1/NetBackup/logs.borg/borg_currently_running
 f_thislog=/volume1/NetBackup/logs.borg/borg_$(date +%F-%H:%M:%S).log
