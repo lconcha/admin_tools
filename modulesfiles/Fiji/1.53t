@@ -1,0 +1,17 @@
+#%Module -*- tcl -*-
+##
+## modulefile
+##
+proc ModulesHelp { } {
+
+  puts stderr "\tAdds Fiji to your environment variables,"
+}
+
+module-whatis "adds Fiji compilers to your environment variables"
+
+set               root                 /home/inb/soporte/lanirem_software/Fiji.app
+
+prepend-path	PATH           $root/bin
+
+conflict    Fiji
+
