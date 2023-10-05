@@ -7,11 +7,11 @@ proc ModulesHelp { } {
   puts stderr "\tAdds Paraview to your environment variables,"
 }
 
-module-whatis "adds PAraview to your environment variables"
+module-whatis "adds Paraview to your environment variables"
 
 set               root                 /home/inb/soporte/lanirem_software/Paraview_5.11.1
 
 prepend-path	PATH           $root/bin
 
-conflict    Fiji
+conflict    paraview
 
