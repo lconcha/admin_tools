@@ -29,5 +29,10 @@
 */pruebas/
 */Pruebas/
 */PRUEBAS/
+*/Pruebas*/
+*/pruebas*/
+*/test*/
+*/Test*/
+*/TEST*/
 */Penelope/
 */tesla3/
