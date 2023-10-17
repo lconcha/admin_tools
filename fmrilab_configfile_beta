@@ -15,7 +15,8 @@ cat $logo
 
 # modules config
 source /etc/profile.d/modules.sh  # define el comando module
-export MODULEPATH=/home/inb/soporte/admin_tools/modulesfiles # carga el path de los modulos de don clusterio
+#export MODULEPATH=/home/inb/soporte/admin_tools/modulesfiles # carga el path de los modulos de don clusterio
+export MODULEPATH=/misc/rhesus/rrios/Don_Clusterio/Code/admin_tools/modulesfiles # carga los modulos (en beta) para don clusterio
 module load inb_tools # cargamos las inb_tools por default a todo usuario del cluster
 
 # SGE config
@@ -80,3 +81,5 @@ echolor cyan "$wikiURL"
 echo ""
 echolor bold "  Revisa periódicamente tus respaldos. Aprende cómo hacerlo en la wiki."
 echo ""
+
+echo "NOTA: Está activa la configuración Beta de Don Clusterio (fmrilab_configfile_beta)"
