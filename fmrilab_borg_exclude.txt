@@ -30,3 +30,4 @@
 */Pruebas/
 */PRUEBAS/
 */Penelope/
+*/tesla3/
