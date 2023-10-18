@@ -9,12 +9,10 @@ proc ModulesHelp { } {
 
 module-whatis "adds Mrtrix3 compilers to your environment variables"
 
-set               root                 /home/inb/soporte/lanirem_software/mrtrix_3.0.3
+set               root                 /home/inb/soporte/lanirem_software/mrtrix_3.0.4
 
 prepend-path	PATH           $root/bin
-prepend-path	PATH                 $root/scripts
-prepend-path	LD_LIBRARY_PATH      $root/lib
+#prepend-path	LD_LIBRARY_PATH      $root/lib
 
-#prereq  gcc
 conflict    mrtrix
 

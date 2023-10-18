@@ -1,0 +1,17 @@
+#%Module -*- tcl -*-
+##
+## modulefile
+##
+proc ModulesHelp { } {
+
+  puts stderr "\tAdds tig to your environment variables,"
+}
+
+module-whatis "adds tig to your environment variables"
+
+set               root                 /home/inb/soporte/lanirem_software/tig_2.5.8
+
+prepend-path	PATH           $root/bin
+
+conflict    tig
+
