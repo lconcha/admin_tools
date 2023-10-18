@@ -1,0 +1,14 @@
+#%Module -*- tcl -*-
+##
+## modulefile
+##
+proc ModulesHelp { } {
+
+  puts stderr "\tAdds LayNii to your environment variables,"
+}
+
+module-whatis "adds LayNii to your environment variables"
+
+set               root                 /home/inb/soporte/lanirem_software/LayNii
+
+prepend-path	PATH                 $root
