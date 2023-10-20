@@ -13,7 +13,7 @@ if [ ! $(id -u) -eq 0 ]; then
 fi
 
 # hardcoded limit days
-DEFAULT_LIMIT_DAYS=10
+DEFAULT_LIMIT_DAYS=7
 
 # Magia negra de bash para asignar variable default si no hay argumento de entrada en $1
 LIMIT_DAYS="${1:-$DEFAULT_LIMIT_DAYS}"
