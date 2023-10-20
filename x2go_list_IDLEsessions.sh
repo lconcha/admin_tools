@@ -23,7 +23,7 @@ for ll in `sudo x2golistsessions_root`; do
   
 
   sid=`echo $ll | awk -F \| '{print $2}'`
-  echo "session: $sid, $days days old, lastd: $lastd, lastsec: $lastsec, now: $now"
+  echo "session: $sid, $days days old, lastd: $lastd"
 
 
 done
