@@ -19,7 +19,7 @@ date
 # Setting this, so the repo does not need to be given on the commandline:
 export BORG_REPO=admin@sesamo8:/volume1/NetBackup/borg_repo
 #export BORG_PASSPHRASE='borgensesamo8'
-export BORG_PASSPHRASE=$(cat `dirname $0`/private/borg_passphrase)
+export BORG_PASSPHRASE=$(cat `dirname $0`/private/borg_passphrase_sesamo8)
 export BORG_EXCLUDEFILE='/home/inb/soporte/admin_tools/fmrilab_borg_exclude.txt'
 #export RSYNC_EXCLUDEFILE='/home/inb/soporte/admin_tools/fmrilab_backup_exclude.txt'
 #export BORG_EXCLUDEFILE=/tmp/borg.exclude
