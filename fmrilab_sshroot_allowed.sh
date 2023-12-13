@@ -13,6 +13,9 @@ case "$1" in
     backup_borg_sesamo8)
       /home/inb/soporte/admin_tools/fmrilab_borg_backup_sesamo8.sh
     ;;
+    backup_borg_sesamo5)
+      /home/inb/soporte/admin_tools/fmrilab_borg_backup_sesamo5.sh
+    ;;
     backup_rsync)
       echo "rsync not implemented yet"
       exit 0
