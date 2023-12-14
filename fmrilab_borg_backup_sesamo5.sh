@@ -1,10 +1,5 @@
 #!/bin/bash
 
-####UNFINISHED
-echo unfinished. bye.
-exit 2
-#########
-
 
 # Only root can run this script
 u=$(whoami)
