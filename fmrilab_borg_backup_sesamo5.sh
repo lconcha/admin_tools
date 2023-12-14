@@ -19,7 +19,6 @@ date
 # Setting this, so the repo does not need to be given on the commandline:
 export BORG_REPO=admin@sesamo:/volume1/fmrilab/backup/borg_repo
 export BORG_PASSPHRASE=$(cat `dirname $0`/private/borg_passphrase_sesamo5)
-echo "----- $BORG_PASSPHRASE"
 export BORG_EXCLUDEFILE='/home/inb/soporte/admin_tools/fmrilab_borg_exclude.txt'
 
 
