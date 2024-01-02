@@ -56,7 +56,7 @@ freesurfer7 () {
 
 
 # ALIAS
-alias scpresume="rsync -avz --partial --progress --rsh=ssh"
+alias scpresume="rsync -av --partial --progress --rsh=ssh"
 
 
 # Una bandera para avisar que este archivo ya corrio
