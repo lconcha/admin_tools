@@ -62,7 +62,7 @@ whiteList=`cat /home/inb/soporte/inb_cluster_whiteList.txt`
 isWhite=0
 for w in $whiteList
 do
-  if [[ "$h" == "$w" ]]
+  if [[ "${h//[0-9]/}" == "$w" ]]
     then
     if [ $verbose -eq 1 ]
     then
