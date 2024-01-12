@@ -1,0 +1,18 @@
+#%Module -*- tcl -*-
+##
+## modulefile
+##
+proc ModulesHelp { } {
+
+  puts stderr "\tAdds R to your environment variables,"
+}
+
+module-whatis "adds R to your environment variables"
+
+set               root         /home/inb/soporte/lanirem_software/R/4.3.2
+
+prepend-path	PATH           $root/bin
+prepend-path      MANPATH      $root/share/man/man1
+
+conflict R
+
