@@ -14,25 +14,27 @@ set               root                 /home/inb/soporte/lanirem_software/freesu
 
 prepend-path          PATH           $root/bin
 
-prepend-path          FREESURFER_HOME           $root/
-setenv	              FSF_OUTPUT_FORMAT         nii
+setenv                FREESURFER_HOME           $root/
+setenv                FREESURFER                $root/
+setenv	              FSF_OUTPUT_FORMAT         nii.gz
 
-prepend-path          SUBJECTS_DIR              $root/subjects
-prepend-path          FUNCTIONALS_DIR           $root/sessions
-
-
-prepend-path          FSFAST_HOME               $root/fsfast
-prepend-path          FMRI_ANALYSIS_DIR         $root/fsfast
+setenv                SUBJECTS_DIR              $root/subjects
+setenv                FUNCTIONALS_DIR           $root/sessions
 
 
-prepend-path          MNI_DIR                   $root/mni
-prepend-path          MINC_BIN_DIR              $root/mni/bin
-prepend-path          MINC_LIB_DIR              $root/mni/lib
-prepend-path          MINC_DATAPATH             $root/mni/data
-prepend-path          MNI_PERL5LIB              $root/mni/share/perl5
+setenv                FSFAST_HOME               $root/fsfast
+setenv                FMRI_ANALYSIS_DIR         $root/fsfast
+
+
+setenv                MNI_DIR                   $root/mni
+setenv                MINC_BIN_DIR              $root/mni/bin
+setenv                MINC_LIB_DIR              $root/mni/lib
+setenv                MINC_DATAPATH             $root/mni/data
+setenv                MNI_PERL5LIB              $root/mni/share/perl5
 
 
 # podriamos hacer que haga load de fsl como requisito
+module load fsl
 # prepend-path          FSL_DIR              $root/mni/bin
 
 
@@ -41,4 +43,3 @@ prepend-path          MNI_PERL5LIB              $root/mni/share/perl5
 #prepend-path          LD_LIBRARY_PATH           $root/lib/misc/lib
 #prepend-path          DYLD_LIBRARY_PATH         $root/lib/misc/lib
 
-module load fsl
