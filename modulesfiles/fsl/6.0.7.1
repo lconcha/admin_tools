@@ -27,7 +27,8 @@ prepend-path	FSLWISH		$root/bin/fslwish
 setenv	FSLPARALLEL	1
 setenv	FSLGECUDAQ	nvidia.q
 
-
+# configure fsl_sub
+setenv	FSLSUB_CONF		$root/etc/fslconf/fsl_sub.yml
 
 
 # extras taken from LAVIS file. do we need them?
