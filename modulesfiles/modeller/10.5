@@ -1,0 +1,20 @@
+#%Module -*- tcl -*-
+##
+## modulefile
+##
+proc ModulesHelp { } {
+
+  puts stderr "\tAdds modeller 10.5 to your environment variables"
+}
+
+module-whatis "adds Adds modeller 10.5 to your environment variables"
+
+set             root                    /home/inb/soporte/lanirem_software/modeller
+
+prepend-path   	PATH           	        $root/bin
+
+prepend-path    LD_LIBRARY_PATH         $root/lib/x86_64-intel8
+prepend-path    DYLD_LIBRARY_PATH       $root/lib/x86_64-intel8
+prepend-path    LIBPATH                 $root/lib/x86_64-intel8
+prepend-path    PYTHONPATH              $root/lib/x86_64-intel8
+prepend-path    PYTHONPATH              $root/MODLIB
