@@ -135,7 +135,10 @@ then
   smtpserver=smtp-relay.sendinblue.com:587
   xuser="lconcha@gmail.com"
   
-  message_file=/home/inb/soporte/configs/bienvenida.html
+  message_file_original=/home/inb/soporte/configs/bienvenida.html
+  message_file=/tmp/message.html
+  sed "s/VAR_USER/${user_login}/g" $message_file_original > $message_file
+
   sendemail -f lconcha@unam.mx \
             -t $user_email \
             -o reply-to=lconcha@unam.mx \
@@ -147,7 +150,7 @@ then
             -s $smtpserver \
             -xu $xuser \
             -xp $pawd
-
+rm $message_file
 fi
 
 
