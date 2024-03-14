@@ -36,25 +36,6 @@ else
 fi
 
 
-# ALIAS/funciones temporales para retro-compatibilidad.
-# Eliminar cuando los usuarios se acostumbren a los modulos
-MENSAJE_ALIAS="Este comando pronto será desactivado. Se cargó el software pero empieza a usar módulos para eso. Mas info en https://github.com/c13inb/c13inb.github.io/wiki/Cl%C3%BAster:-M%C3%B3dulos"
-fsl6 () {
-  echo $MENSAJE_ALIAS
-  module load fsl
-}
-
-mrtrix3 () {
-  echo $MENSAJE_ALIAS
-  module load mrtrix
-}
-
-freesurfer7 () {
-  echo $MENSAJE_ALIAS
-  module load freesurfer
-}
-
-
 # ALIAS
 alias scpresume="rsync -av --partial --progress --rsh=ssh"
 
@@ -69,7 +50,7 @@ echolor green "---------------------------------------------------------------"
 echolor green " Usa módulos para ajustar tu ambiente:"
 echolor green "     'module avail' - Muestra los módulos disponibles."
 echolor green "     'module load <module>' - Carga el módulo para esta sesión."
-echolor green " Más información en https://researchcomputing.princeton.edu/support/knowledge-base/modules "
+echolor green " Más información en https://github.com/c13inb/c13inb.github.io/wiki/Modules "
 echolor green "---------------------------------------------------------------"
 echolor green " Python: Instala tu propia Anaconda o miniconda. Instrucciones:"
 echolor green "         https://github.com/c13inb/c13inb.github.io/wiki/Anaconda"
