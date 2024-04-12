@@ -1,0 +1,17 @@
+#%Module -*- tcl -*-
+##
+## modulefile
+##
+proc ModulesHelp { } {
+
+  puts stderr "\tAdds afni to your environment variables,"
+}
+
+module-whatis "adds afni to your environment variables"
+
+set               root              /home/inb/soporte/lanirem_software/afni_24.1.02
+prepend-path      PATH              $root/
+prepend-path	DYLD_FALLBACK_LIBRARY_PATH	$root/
+
+conflict    afni
+
