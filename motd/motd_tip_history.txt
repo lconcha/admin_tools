@@ -1,0 +1,2 @@
+Revisa tu bitácora de comandos con history
+Usa Ctrl+r para revisarla interactivamente.

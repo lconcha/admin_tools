@@ -1,0 +1,2 @@
+Los alias son la onda. Por ejemplo:
+alias scpresume='rsync -az --progress --stats --rsh=ssh"

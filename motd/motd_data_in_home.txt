@@ -1,0 +1,1 @@
+No guardes datos en tu HOME, ni en tu Desktop, usa /misc

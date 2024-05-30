@@ -1,0 +1,2 @@
+Todo usuario del cluster debe estar en el canal #don_clusterio de la red lanirem.
+Visita http://www.lanirem.inb.unam.mx/red-lanirem.html

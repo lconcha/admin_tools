@@ -1,0 +1,4 @@
+Tip: Muestra tus archivos en orden cronológico inverso (lo más reciente al final):
+ls -larth
+Puedes hacerlo un alias:
+alias lu='ls -larth'
