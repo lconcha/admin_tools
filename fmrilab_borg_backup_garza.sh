@@ -22,7 +22,7 @@ whoami
 
 
 # Setting this, so the repo does not need to be given on the commandline:
-f_passphrase=$(`dirname $0`/private/borg_passphrase_garza)
+f_passphrase=`dirname $0`/private/borg_passphrase_garza
 export BORG_REPO=egarza:/volume1/NetBackup/repo.borg
 export BORG_PASSPHRASE=$(cat $f_passphrase)
 export BORG_EXCLUDEFILE='/home/inb/soporte/admin_tools/fmrilab_borg_exclude.txt'
