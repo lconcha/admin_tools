@@ -15,6 +15,7 @@ fi
 echo "start of script"
 export SECONDS=0
 date
+whoami
 
 
 
