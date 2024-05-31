@@ -17,21 +17,21 @@ export SECONDS=0
 date
 
 
-echo BREAKPOINT!!!
-exit 0
 
 
 
 # Setting this, so the repo does not need to be given on the commandline:
 f_passphrase=$(cat `dirname $0`/private/borg_passphrase_garza)
-export BORG_REPO=admin@zinana:/volume1/NetBackup/borg_repo
+export BORG_REPO=admin@zinana:/volume1/NetBackup/repo.borg
 export BORG_PASSPHRASE=$(cat $f_passphrase)
 export BORG_EXCLUDEFILE='/home/inb/soporte/admin_tools/fmrilab_borg_exclude.txt'
 
 
 ## This is how I initialized the repo:
-# root@lauterbur$ borg --remote-path=/usr/local/bin/borg init --encryption=repokey egarza@zinana:/volume1/NetBackup/borg
-# admin@sesamo:/volume1/fmrilab/backup$ borg config borg_repo additional_free_space 2G
+# egarza@Zinana:/volume1/NetBackup$ borg  init --encryption=repokey /volume1/NetBackup/repo.borg
+# egarza@Zinana:/volume1/NetBackup$ borg config repo.borg additional_free_space 2G 
+# egarza@Zinana:/volume1/NetBackup$ borg key export repo.borg/; # copie la llave a mi keepass
+
 ## And I created an rsh key for user root in mansfield, which I then copied to sesamo
 # root@mansfield:~# ssh-keygen 
 # ssh-copy-id admin@sesamo
