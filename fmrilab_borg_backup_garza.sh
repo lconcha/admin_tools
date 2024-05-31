@@ -22,8 +22,8 @@ whoami
 
 
 # Setting this, so the repo does not need to be given on the commandline:
-f_passphrase=$(cat `dirname $0`/private/borg_passphrase_garza)
-export BORG_REPO=admin@zinana:/volume1/NetBackup/repo.borg
+f_passphrase=$(`dirname $0`/private/borg_passphrase_garza)
+export BORG_REPO=egarza:/volume1/NetBackup/repo.borg
 export BORG_PASSPHRASE=$(cat $f_passphrase)
 export BORG_EXCLUDEFILE='/home/inb/soporte/admin_tools/fmrilab_borg_exclude.txt'
 
@@ -33,9 +33,9 @@ export BORG_EXCLUDEFILE='/home/inb/soporte/admin_tools/fmrilab_borg_exclude.txt'
 # egarza@Zinana:/volume1/NetBackup$ borg config repo.borg additional_free_space 2G 
 # egarza@Zinana:/volume1/NetBackup$ borg key export repo.borg/; # copie la llave a mi keepass
 
-## And I created an rsh key for user root in mansfield, which I then copied to sesamo
-# root@mansfield:~# ssh-keygen 
-# ssh-copy-id admin@sesamo
+## And I created an rsh key for user root in the PCclient, which I then copied to the synology
+# root@tezca:~# ssh-keygen 
+# ssh-copy-id egarza@zinana
 
 
 # some helpers and error handling:
