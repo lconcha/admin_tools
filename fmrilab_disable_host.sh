@@ -26,7 +26,7 @@ catted=`grep "$H" $whiteList`
 if [ -z $catted ]
 then
 	echo "  Adding $H to whitelist: $whiteList"
-	echo "$H $WL" > $whiteList
+	echo "$H" >> $whiteList
 else
     echo "  $H already in whitelist: $whiteList"
 fi
