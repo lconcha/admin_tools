@@ -111,8 +111,8 @@ done < $tmpFile
 
 
 
-# and now we check /home/inb, unless in tesla
-if [[ ! `uname -n` == "tesla" ]]
+# and now we check /home/inb, unless in hahn
+if [[ ! `uname -n` == "hahn" ]]
 then
   mPoint=/home/inb
   fSystem=`stat -f -L -c %T $mPoint`
