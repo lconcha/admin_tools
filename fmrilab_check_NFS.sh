@@ -90,9 +90,29 @@ fi
  #fi
 
  testFile=/misc/${h}/.testDir/.testFile
+ timed_out=0
+ tout=3
+ timeout $tout ls $mPoint > /dev/null
+  if [[ $? == 124 ]]                                                                             
+  then
+    #echo "[ERROR] $h is taking longer than $tout seconds to respond."
+    timed_out=1
+    if [ $verbose -eq 0 ]
+    then
+      printf "%s" "T"
+    else
+      printf "${colorerror} TIMED_OUT\n$reset"
+    fi
+    Errors="$Errors  ( $mPoint timed out ),"
+    continue
+  fi
+
+
+
+
  if [[ ! -f $testFile ]]
  then
-  Errors="$Errors ( cannot find $testFile )"
+  Errors="$Errors  ( cannot find $testFile ),"
   if [ $verbose -eq 0 ]
   then
     printf "%s" "E"
@@ -129,8 +149,8 @@ fi
 # and spit out some results
 if [ ! -z "$Errors" ]
 then
-  echo "THERE ARE MOUNTING ERRORS:"
-  echo "    $Errors"
+  printf "\n  THERE ARE MOUNTING ERRORS IN $HOSTNAME:\n"
+  echo "$Errors" | sed 's/,/\n/g'
 else
   cat $testFile
   #echo -e "\e[32m  OK \e[0m"
