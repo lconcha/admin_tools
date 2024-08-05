@@ -139,19 +139,27 @@ then
   message_file=/tmp/message.html
   sed "s/VAR_USER/${user_login}/g" $message_file_original > $message_file
 
-  sendemail -f lconcha@unam.mx \
-            -t $user_email \
-            -o reply-to=lconcha@unam.mx \
-            -cc lconcha@gmail.com \
-            -u "Nueva cuenta en Don Clusterio" \
-            -o message-content-type=html \
-            -o message-charset=UTF-8 \
-            -o message-file=$message_file \
-            -s $smtpserver \
-            -xu $xuser \
-            -xp $pawd
+  # sendemail -f lconcha@unam.mx \
+  #           -t $user_email \
+  #           -o reply-to=lconcha@unam.mx \
+  #           -cc lconcha@gmail.com \
+  #           -u "Nueva cuenta en Don Clusterio" \
+  #           -o message-content-type=html \
+  #           -o message-charset=UTF-8 \
+  #           -o message-file=$message_file \
+  #           -s $smtpserver \
+  #           -xu $xuser \
+  #           -xp $pawd
+
+
+mail -s "Nueva cuenta en Don Clusterio" \
+  $user_email \
+  < $message_file
+
 rm $message_file
 fi
+
+
 
 
 echo "Finished creating user $user_login and updated NIS"
