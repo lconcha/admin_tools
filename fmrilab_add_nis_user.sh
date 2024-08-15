@@ -152,7 +152,9 @@ then
   #           -xp $pawd
 
 
-mail -s "Nueva cuenta en Don Clusterio" \
+mutt \
+  -s "Nueva cuenta en Don Clusterio" \
+  -c lconcha@gmail.com \
   $user_email \
   < $message_file
 
