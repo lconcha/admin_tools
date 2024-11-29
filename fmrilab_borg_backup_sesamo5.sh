@@ -67,6 +67,7 @@ fi
 
 borg create                         \
     --remote-path=/usr/local/bin/borg \
+    --max-lock-wait 20              \
     --verbose                       \
     --filter AME                    \
     --list                          \
