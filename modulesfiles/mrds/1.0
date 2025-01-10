@@ -9,7 +9,7 @@ proc ModulesHelp { } {
 
 module-whatis "adds mrds compilers to your environment variables"
 
-set               root                 /home/inb/soporte/lanirem_software/mrds
+set               root                 /home/inb/soporte/lanirem_software/mrds_1.0
 
 prepend-path	PATH           $root/bin
 
