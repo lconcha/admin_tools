@@ -9,7 +9,24 @@ then
 fi
 
 
+help() {
+  echo "
+  Available options:
+
+  restart_sge
+  restart_autofs
+  test
+  help
+
+  "
+
+}
+
+
 case "$1" in
+    help)
+      help
+    ;;
     restart_sge)
       /home/inb/soporte/admin_tools/fmrilab_restart_sgeexecd.sh
     ;;
@@ -29,6 +46,7 @@ case "$1" in
     ;;
     *)
       echo "Option not recognized. Bye."
+      help
       exit 2
     ;;
   esac
