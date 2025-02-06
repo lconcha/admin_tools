@@ -14,8 +14,11 @@ case "$1" in
       /home/inb/soporte/admin_tools/fmrilab_restart_sgeexecd.sh
     ;;
     restart_autofs)
+      echo "Force unmounting everything inside /misc"
       umount -flv /misc/*
+      echo "Restarting autofs"
       service autofs restart
+      echo "Done".
     ;;
     test)
       echo "This is a test"
