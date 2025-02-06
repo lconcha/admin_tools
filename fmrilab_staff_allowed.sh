@@ -13,6 +13,10 @@ case "$1" in
     restart_sge)
       /home/inb/soporte/admin_tools/fmrilab_restart_sgeexecd.sh
     ;;
+    restart_autofs)
+      umount -flv /misc/*
+      service autofs restart
+    ;;
     test)
       echo "This is a test"
       echo "User: $(whoami)"
