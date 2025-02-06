@@ -12,13 +12,12 @@ check() {
     str=$(ps aux | grep sge_execd | awk '{print $1}' | grep sge)
     if [ ! -z $str ]
     then
-        #echo "sge_execd is running"
         echo "yes"
     else
-        #echo "sge_execd is not running"
         echo "no"
     fi
 }
+
 
 
 status=$(check)
@@ -28,8 +27,11 @@ then
   export SGE_ROOT=/opt/sge
   source ${SGE_ROOT}/fmrilab/common/settings.sh
   /opt/sge/bin/lx-amd64/sge_execd
+else
+  echo "SGE seems to be running."
 fi
 
+sleep 1
 check
 
 
