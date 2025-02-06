@@ -1,0 +1,1 @@
+staff ALL=(ALL) NOPASSWD: /home/inb/soporte/admin_tools/fmrilab_staff_allowed.sh
