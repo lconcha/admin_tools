@@ -1,0 +1,15 @@
+#%Module -*- tcl -*-
+##
+## modulefile
+##
+proc ModulesHelp { } {
+
+  puts stderr "\tAdds Connectome Workbench to your environment variables,"
+}
+
+module-whatis "adds Connectome Workbench to your environment variables"
+
+set               root         /home/inb/soporte/lanirem_software/workbench_2.0.1
+
+prepend-path	PATH           $root/bin_linux64
+
