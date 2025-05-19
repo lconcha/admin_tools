@@ -14,6 +14,6 @@ then
 fi
 
 
-rsync -av --progress  --partial \
+rsync -avx --progress  --partial \
   /mnt/raidSSD/* \
   /mnt/home.bak/home/
