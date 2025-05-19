@@ -33,7 +33,10 @@ then
 fi
 
 
+# Unmount first, then mount it again (to refresh)
+umount -fl $local_mount_point
 
+# now mount...
 borg  \
   --remote-path=/usr/local/bin/borg \
   mount $BORG_REPO \
