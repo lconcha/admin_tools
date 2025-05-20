@@ -103,9 +103,8 @@ prune_exit=$?
 
 # actually free repo disk space by compacting segments
 
-echo "Compacting repository"
-
-borg compact --remote-path=/usr/local/bin/borg
+#echo "Compacting repository"
+#borg compact --remote-path=/usr/local/bin/borg
 
 compact_exit=$?
 
