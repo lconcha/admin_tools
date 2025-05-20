@@ -77,7 +77,7 @@ borg create                         \
     --exclude-caches                \
     --one-file-system               \
     --exclude-from=$BORG_EXCLUDEFILE \
-    --ignore-inode                  \
+    --files-cache                   \
     ::'{hostname}-{now}'            \
     $PATHS_TO_BACKUP
 
