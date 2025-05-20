@@ -64,7 +64,7 @@ then
 fi
 
 
-
+echo "Starting borg create of: $PATHS_TO_BACKUP"
 borg create                         \
     --remote-path=/usr/local/bin/borg \
     --lock-wait 20              \
