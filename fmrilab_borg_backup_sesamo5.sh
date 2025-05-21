@@ -77,27 +77,26 @@ borg create                         \
     --exclude-caches                \
     --one-file-system               \
     --exclude-from=$BORG_EXCLUDEFILE \
-    --files-cache                   \
     ::'{hostname}-{now}'            \
     $PATHS_TO_BACKUP
 
 backup_exit=$?
 
-echo "Pruning repository"
+# echo "Pruning repository"
 
-# Use the `prune` subcommand to maintain 3 daily, 1 weekly and 2 monthly
-# archives of THIS machine. The '{hostname}-*' matching is very important to
-# limit prune's operation to this machine's archives and not apply to
-# other machines' archives also:
+# # Use the `prune` subcommand to maintain 3 daily, 1 weekly and 2 monthly
+# # archives of THIS machine. The '{hostname}-*' matching is very important to
+# # limit prune's operation to this machine's archives and not apply to
+# # other machines' archives also:
 
-borg prune                          \
-    --remote-path=/usr/local/bin/borg \
-    --list                          \
-    --glob-archives '{hostname}-*'  \
-    --show-rc                       \
-    --keep-daily    3               \
-    --keep-weekly   1               \
-    --keep-monthly  2
+# borg prune                          \
+#     --remote-path=/usr/local/bin/borg \
+#     --list                          \
+#     --glob-archives '{hostname}-*'  \
+#     --show-rc                       \
+#     --keep-daily    3               \
+#     --keep-weekly   1               \
+#     --keep-monthly  2
 
 prune_exit=$?
 
