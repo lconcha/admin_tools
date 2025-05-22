@@ -23,6 +23,9 @@ case "$1" in
       echo "rsync not implemented yet"
       exit 0
     ;;
+    mount_borg_tesla)
+      /home/inb/soporte/admin_tools/fmrilab_mount_borg.sh
+    ;;
     test)
       echo "This is a test"
       echo "User: $(whoami)"
