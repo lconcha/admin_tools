@@ -64,6 +64,10 @@ case "$1" in
         echo "This command must be run in the SGE server (hahn)"
       fi
     ;;
+    fix_misc)
+      /home/inb/soporte/admin_tools/fmrilab_fix_misc.sh
+      echo "Done."
+    ;;
     test)
       echo "This is a test"
       echo "User: $(whoami)"
