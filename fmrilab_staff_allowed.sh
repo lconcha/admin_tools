@@ -17,6 +17,7 @@ help() {
   restart_autofs
   disable_sge_host <host>
   enable_sge_host <host>
+  fix_misc
   test
   help
 
@@ -65,7 +66,7 @@ case "$1" in
       fi
     ;;
     fix_misc)
-      /home/inb/soporte/admin_tools/fmrilab_fix_misc.sh
+      /home/inb/soporte/configs/fmrilab_fix_misc.sh
       echo "Done."
     ;;
     test)
