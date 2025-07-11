@@ -18,6 +18,7 @@ help() {
   disable_sge_host <host>
   enable_sge_host <host>
   fix_misc
+  remove_borg_lock <DIRECTORY.lock.exclusive>
   test
   help
 
@@ -68,6 +69,34 @@ case "$1" in
     fix_misc)
       /home/inb/soporte/configs/fmrilab_fix_misc.sh
       echo "Done."
+    ;;
+    remove_borg_lock)
+      echo "Host: $(hostname)"
+      lockdir=$2
+      echo "Looking for directory: $lockdir"
+      if [[ -z "$lockdir" ]]
+      then
+        echo "Please provide a directory to look for borg locks."
+        exit 2
+      fi
+
+      # Ensure lockdir starts with /root/.cache/borg
+      if [[ "$lockdir" != /root/.cache/borg* ]]
+      then
+        echo "ERROR: lockdir must start with /root/.cache/borg"
+        exit 3
+      fi
+
+      if [[ -d "$lockdir" ]]
+      then
+        echo "Found directory"
+        echo "Removing borg locks"
+        rm -fRv "${lockdir}"; # this is the main command
+      else
+        echo "Directory does not exist: $lockdir"
+        exit 1
+      fi
+
     ;;
     test)
       echo "This is a test"
