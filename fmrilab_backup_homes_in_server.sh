@@ -14,6 +14,20 @@ then
 fi
 
 
-rsync -avx --progress  --partial \
-  /mnt/raidSSD/* \
-  /mnt/home.bak/home/
+rsync -ax --inplace \
+    --info=progress2 --stats --no-compress --partial \
+    --exclude=.docker/ \
+    --exclude=*-tmp-*/ \
+    --exclude=tmp/ \
+    --exclude=TMP/ \
+    --exclude=temporal/ \
+    --exclude=nobackup/ \
+    --exclude=*.old/ \
+    --exclude=*.bak/ \
+    --exclude=.cache/ \
+    --exclude=.Cache/ \
+    --exclude=Trash/ \
+   --exclude=Downloads/ \
+   --exclude=Code/logs/ \
+  /mnt/SSD0/homevol \
+  /mnt/SSD1/
