@@ -14,6 +14,10 @@ then
 fi
 
 
+source="/mnt/SSD0/homevol"
+destination="/mnt/SSD1/"
+
+
 rsync -ax --inplace --delete \
     --info=progress2 --stats --no-compress --partial \
     --exclude=.docker/ \
@@ -29,5 +33,5 @@ rsync -ax --inplace --delete \
     --exclude=Trash/ \
    --exclude=Downloads/ \
    --exclude=Code/logs/ \
-  /mnt/SSD0/homevol \
-  /mnt/SSD1/
+   $source \
+   $destination
