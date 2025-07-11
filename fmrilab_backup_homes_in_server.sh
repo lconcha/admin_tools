@@ -14,7 +14,7 @@ then
 fi
 
 
-rsync -ax --inplace \
+rsync -ax --inplace --delete \
     --info=progress2 --stats --no-compress --partial \
     --exclude=.docker/ \
     --exclude=*-tmp-*/ \
