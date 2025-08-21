@@ -26,6 +26,9 @@ case "$1" in
     mount_borg_tesla)
       /home/inb/soporte/admin_tools/fmrilab_mount_borg.sh
     ;;
+    umount_borg_tesla)
+      /home/inb/soporte/admin_tools/fmrilab_umount_borg.sh
+    ;;
     test)
       echo "This is a test"
       echo "User: $(whoami)"

@@ -43,15 +43,7 @@ then
 fi
 
 
-# Unmount first, then mount it again (to refresh)
+# Unmount
 echo "Unmounting $local_mount_point ..."
 umount -fl $local_mount_point
 
-
-# now mount...
-echo "Mounting borg in $local_mount_point (this takes a few minutes) ..."
-borg  \
-  --remote-path=/usr/local/bin/borg \
-  mount $BORG_REPO \
-  -o allow_other,ro \
-  $local_mount_point
