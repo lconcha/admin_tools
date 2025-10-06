@@ -1,0 +1,14 @@
+#%Module -*- tcl -*-
+##
+## modulefile
+##
+proc ModulesHelp { } {
+
+  puts stderr "\tAdds dcm2niix to your environment variables,"
+}
+
+module-whatis "adds dcm2niix to your environment variables"
+
+set               root               /home/inb/soporte/lanirem_software/dcm2niix/1.0.20250505
+
+prepend-path          PATH           $root/
