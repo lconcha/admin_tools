@@ -32,13 +32,16 @@ export BORG_EXCLUDEFILE='/home/inb/soporte/admin_tools/fmrilab_borg_exclude.txt'
 
 # some helpers and error handling:
 echo() { printf "\n%s %s\n\n" "$( date )" "$*" >&2; }
-trap 'echo $( date ) Backup interrupted >&2; exit 2' INT TERM
+# Initialize PID variable to avoid errors if trap triggers early
+KEEP_ALIVE_PID=0
+trap 'echo $( date ) Backup interrupted >&2; kill $KEEP_ALIVE_PID 2>/dev/null; exit 2' INT TERM EXIT
+
+
 
 echo "Starting backup"
 
 # Backup the most important directories into an archive named after
 # the machine this script is currently running on:
-
 PATHS_TO_BACKUP=/misc/${HOSTNAME}*
 
 
@@ -64,6 +67,14 @@ then
 fi
 
 
+# Run a loop in the background that touches the directory every 30 seconds
+while true; do
+    ls -d $PATHS_TO_BACKUP > /dev/null 2>&1
+    sleep 30
+done &
+KEEP_ALIVE_PID=$!
+
+
 echo "Starting borg create of: $PATHS_TO_BACKUP"
 borg create                         \
     --remote-path=/usr/local/bin/borg \
@@ -79,8 +90,14 @@ borg create                         \
     --exclude-from=$BORG_EXCLUDEFILE \
     ::'{hostname}-{now}'            \
     $PATHS_TO_BACKUP
-
 backup_exit=$?
+
+
+# Stop the background keep-alive loop
+kill $KEEP_ALIVE_PID 2>/dev/null
+wait $KEEP_ALIVE_PID 2>/dev/null
+
+
 
 echo "Pruning repository"
 # # Use the `prune` subcommand to maintain 3 daily, 1 weekly and 2 monthly
