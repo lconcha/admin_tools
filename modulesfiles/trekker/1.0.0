@@ -1,0 +1,15 @@
+#%Module -*- tcl -*-
+##
+## modulefile
+##
+proc ModulesHelp { } {
+
+  puts stderr "\tAdds trekker to your environment variables,"
+}
+
+module-whatis "adds trekker to your environment variables"
+
+set               root         /home/inb/soporte/lanirem_software/trekker/1.0.0-rc6
+
+prepend-path	PATH           $root
+
