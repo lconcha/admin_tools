@@ -1,0 +1,80 @@
+#%Module -*- tcl -*-
+##
+## modulefile for FreeSurfer 8.1.0
+##
+proc ModulesHelp { } {
+  puts stderr "\tAdds FreeSurfer 8.1.0 to your environment variables,"
+  puts stderr "\tincluding FREESURFER_HOME, FSL integration, and MINC toolkit support"
+}
+
+module-whatis "adds FreeSurfer to your environment variables"
+
+set root /home/inb/soporte/lanirem_software/freesurfer_8.1.0
+set license /home/inb/soporte/lanirem_software/freesurfer_8.1.0/license.txt
+
+# Require FSL module
+module load fsl
+
+setenv FREESURFER                $root
+setenv FREESURFER_HOME           $root
+setenv LOCAL_DIR                 $root/local
+setenv FS_LICENSE                $license
+setenv FSFAST_HOME               $root/fsfast
+setenv FUNCTIONALS_DIR           $root/sessions
+setenv FSF_OUTPUT_FORMAT         nii.gz
+setenv FMRI_ANALYSIS_DIR         $root/fsfast
+
+set retained_sd 1
+if {![info exists env(SUBJECTS_DIR)]} {
+  setenv SUBJECTS_DIR            $root/subjects
+  set retained_sd 0
+}
+
+
+prepend-path PATH                $root/bin
+
+# MINC toolkit (bundled with FreeSurfer)
+if {[file exists "$root/mni/bin"]} {
+  setenv MINC_BIN_DIR            $root/mni/bin
+  setenv MINC_LIB_DIR            $root/mni/lib
+  setenv MNI_DIR                 $root/mni
+  setenv MNI_DATAPATH            $root/mni/data
+  prepend-path PATH              $root/mni/bin
+  prepend-path LD_LIBRARY_PATH   $root/mni/lib
+}
+
+# Perl path for MINC
+if {[file exists "$root/mni/share/perl5"]} {
+  setenv MNI_PERL5LIB            $root/mni/share/perl5
+  prepend-path PERL5LIB          $root/mni/share/perl5
+}
+
+# FSL integration
+if {[info exists env(FSLDIR)]} {
+  setenv FSL_DIR                 $env(FSLDIR)
+}
+
+
+
+# Misc libraries
+if {[file exists "$root/lib/misc/lib"]} {
+  setenv MISC_LIB                $root/lib/misc/lib
+  prepend-path LD_LIBRARY_PATH   $root/lib/misc/lib
+}
+
+
+
+# Print loaded configuration
+if {[module-info mode] eq "load"} {
+  puts stderr "FreeSurfer 8.0.0 loaded:"
+  puts stderr "  FREESURFER_HOME      $env(FREESURFER_HOME)"
+  puts stderr "  FSFAST_HOME          $env(FSFAST_HOME)"
+  puts stderr "  MINC_BIN_DIR         $env(MINC_BIN_DIR)"
+  puts stderr "  FSL_DIR              $env(FSL_DIR)"
+  puts stderr "  FSF_OUTPUT_FORMAT    $env(FSF_OUTPUT_FORMAT)"
+  puts stderr "  SUBJECTS_DIR         $env(SUBJECTS_DIR)"
+  if {$retained_sd eq 1} {
+    puts stderr "    Info: SUBJECTS_DIR was already set."
+  }
+}
+
