@@ -5,7 +5,7 @@
 u=$(whoami)
 if [[ ! "${u}" == "root" ]]
 then
-  echo "ERROR. Only root can run this script."
+    echo "ERROR. Only root can run this script."
   exit 0
 fi
 
@@ -17,10 +17,32 @@ export SECONDS=0
 date
 
 # Setting this, so the repo does not need to be given on the commandline:
-export BORG_REPO=admin@sesamo:/volume1/fmrilab/backup/borg_repo
+#export BORG_REPO=admin@sesamo:/volume1/fmrilab/backup/borg_repo
+#export BORG_REPO=admin@sesamo:/volume1/fmrilab/backup/borg_repo
+export BORG_REPO=tesla-backup:/mnt/admin_only/sesamo5/backup/borg_repo
 export BORG_PASSPHRASE=$(cat `dirname $0`/private/borg_passphrase_sesamo5)
+#export BORG_PASSPHRASE=$(cat /home/inb/soporte/admin_tools/private/borg_passphrase_sesamo5)
 export BORG_EXCLUDEFILE='/home/inb/soporte/admin_tools/fmrilab_borg_exclude.txt'
+echo "INFO. BORG_REPO is: $BORG_REPO"
 
+if [ -z "$BORG_PASSPHRASE" ]
+then
+  echo "ERROR. BORG_PASSPHRASE is not set. Cannot continue."
+  exit 2
+else
+  echo "INFO. BORG_PASSPHRASE is set."
+fi
+sleep 1
+
+# Check if the mount is alive on Tesla
+canaryfile=/mnt/admin_only/sesamo5/backup/borg_repo/README
+if ssh soporte@tesla-backup "test -f $canaryfile"
+then
+    echo "Mount is active. Starting backup..."
+else
+    echo "ERROR. Cannot find $canaryfile on tesla. Cannot continue."
+    exit 2
+fi
 
 ## Tis is how I initialized the repo:
 # root@mansfield$ borg --remote-path=/usr/local/bin/borg init --encryption=repokey admin@sesamo:/volume1/fmrilab/backup/borg_repo 
@@ -57,7 +79,7 @@ do
    isOK=0
   else
    echo "INFO. Found ${d}/.testDir/.testFile"
-   cat ${d}/.testDir/.testFile
+   #cat ${d}/.testDir/.testFile
   fi
 done
 if [ $isOK -eq 0 ]
@@ -77,7 +99,6 @@ KEEP_ALIVE_PID=$!
 
 echo "Starting borg create of: $PATHS_TO_BACKUP"
 borg create                         \
-    --remote-path=/usr/local/bin/borg \
     --lock-wait 20              \
     --verbose                       \
     --filter AME                    \
@@ -92,6 +113,8 @@ borg create                         \
     $PATHS_TO_BACKUP
 backup_exit=$?
 
+#--remote-path=/usr/local/bin/borg \
+    
 
 # Stop the background keep-alive loop
 kill $KEEP_ALIVE_PID 2>/dev/null
@@ -106,13 +129,14 @@ echo "Pruning repository"
 # # other machines' archives also:
 
 borg prune                          \
-    --remote-path=/usr/local/bin/borg \
     --list                          \
     --glob-archives '{hostname}-*'  \
     --show-rc                       \
     --keep-daily    3               \
     --keep-weekly   1               \
     --keep-monthly  2
+#--remote-path=/usr/local/bin/borg \
+    
 
 prune_exit=$?
 

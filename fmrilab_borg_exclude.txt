@@ -36,3 +36,5 @@
 */TEST*/
 */Penelope/
 */tesla3/
+*/lost+found/
+*/*-tmp-*/
