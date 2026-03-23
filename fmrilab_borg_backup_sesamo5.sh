@@ -25,6 +25,9 @@ export BORG_PASSPHRASE=$(cat `dirname $0`/private/borg_passphrase_sesamo5)
 export BORG_EXCLUDEFILE='/home/inb/soporte/admin_tools/fmrilab_borg_exclude.txt'
 echo "INFO. BORG_REPO is: $BORG_REPO"
 
+# Use this only for the first run after moving the repo
+export BORG_RELOCATED_REPO_ACCESS_IS_OK=yes
+
 if [ -z "$BORG_PASSPHRASE" ]
 then
   echo "ERROR. BORG_PASSPHRASE is not set. Cannot continue."
