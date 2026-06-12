@@ -17,7 +17,7 @@ export SECONDS=0
 date
 
 # Setting this, so the repo does not need to be given on the commandline:
-export BORG_REPO=admin@sesamo8:/volume1/NetBackup/borg_repo
+export BORG_REPO=ssh://tesla-backup/mnt/admin_only/sesamo5/backup/borg_repo
 #export BORG_PASSPHRASE='borgensesamo8'
 export BORG_PASSPHRASE=$(cat `dirname $0`/private/borg_passphrase_sesamo8)
 export BORG_EXCLUDEFILE='/home/inb/soporte/admin_tools/fmrilab_borg_exclude.txt'
