@@ -1,0 +1,27 @@
+#%Module -*- tcl -*-
+##
+## modulefile
+##
+proc ModulesHelp { } {
+
+  puts stderr "\tAdds CIVET 2.1.1 to your environment variables,"
+}
+
+module-whatis "adds CIVET 2.1.1 to your environment variables"
+
+set               root                 /home/inb/soporte/lanirem_software/civet/2.1.1/Linux-x86_64
+
+prepend-path      PATH                 $root/CIVET-2.1.1
+prepend-path      PATH                 $root/CIVET-2.1.1/progs
+prepend-path      PATH                 $root/bin
+prepend-path      LD_LIBRARY_PATH      $root/lib
+prepend-path      MNI_DATAPATH         $root/share
+prepend-path      PERL5LIB             $root/perl
+prepend-path      R_LIBS               $root/R_LIBS
+setenv            VOLUME_CACHE_THRESHOLD  -1
+setenv            BRAINVIEW            $root/share/brain-view
+setenv            MINC_FORCE_V2        1
+setenv            MINC_COMPRESS        4
+setenv            CIVET_JOB_SCHEDULER  DEFAULT
+
+module load minc_toolkit-v2/1.9.18
