@@ -24,7 +24,7 @@ fi
 
 
 
-export BORG_REPO=admin@sesamo:/volume1/fmrilab/backup/borg_repo
+export BORG_REPO=tesla-backup:/mnt/admin_only/sesamo5/backup/borg_repo
 export BORG_PASSPHRASE=$(cat `dirname $0`/private/borg_passphrase_sesamo5)
 if [ -z "$BORG_REPO" ] || [ -z "$BORG_PASSPHRASE" ]; then
   echo "FATAL ERROR. BORG_REPO or BORG_PASSPHRASE not set."
@@ -51,7 +51,6 @@ umount -fl $local_mount_point
 # now mount...
 echo "Mounting borg in $local_mount_point (this takes a few minutes) ..."
 borg  \
-  --remote-path=/usr/local/bin/borg \
   --bypass-lock \\
   mount $BORG_REPO \
   -o allow_other,ro \
