@@ -51,7 +51,7 @@ umount -fl $local_mount_point
 # now mount...
 echo "Mounting borg in $local_mount_point (this takes a few minutes) ..."
 borg  \
-  --bypass-lock \\
+  --bypass-lock \
   mount $BORG_REPO \
   -o allow_other,ro \
   $local_mount_point
